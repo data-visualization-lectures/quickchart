@@ -20,7 +20,7 @@ function App() {
             QuickChart UI
           </h1>
           <p className="text-gray-600 text-sm md:text-base mt-1">
-            Chart.js チャートを簡単に生成できるツール
+            チャートを簡単に生成できるツール
           </p>
         </div>
       </header>
