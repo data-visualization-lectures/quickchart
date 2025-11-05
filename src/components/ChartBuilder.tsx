@@ -33,7 +33,6 @@ export function ChartBuilder({
 
   const handleCSVDataLoad = (config: ChartConfig) => {
     onChange(config);
-    setActiveTab('manual');
   };
 
   return (

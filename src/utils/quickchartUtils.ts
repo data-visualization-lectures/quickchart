@@ -48,12 +48,12 @@ export function copyToClipboard(text: string): Promise<void> {
 }
 
 export const CHART_TYPES = [
-  { value: 'bar', label: 'Bar Chart' },
-  { value: 'line', label: 'Line Chart' },
-  { value: 'pie', label: 'Pie Chart' },
-  { value: 'doughnut', label: 'Doughnut Chart' },
-  { value: 'radar', label: 'Radar Chart' },
-  { value: 'polarArea', label: 'Polar Area Chart' },
+  { value: 'bar', label: '棒グラフ (Bar Chart)' },
+  { value: 'line', label: '折れ線グラフ (Line Chart)' },
+  { value: 'pie', label: '円グラフ (Pie Chart)' },
+  { value: 'doughnut', label: 'ドーナツグラフ (Doughnut Chart)' },
+  { value: 'radar', label: 'レーダーチャート (Radar Chart)' },
+  { value: 'polarArea', label: 'ポーラーエリアチャート (Polar Area Chart)' },
 ] as const;
 
 export const OUTPUT_FORMATS = [
@@ -76,7 +76,7 @@ export const DEFAULT_CHART_CONFIG: ChartConfig = {
     labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May'],
     datasets: [
       {
-        label: 'Sample Data',
+        label: 'Value',
         data: [12, 19, 3, 5, 2],
         backgroundColor: 'rgba(75, 192, 192, 0.5)',
         borderColor: 'rgba(75, 192, 192, 1)',

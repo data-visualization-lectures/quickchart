@@ -16,21 +16,6 @@ export function ManualInput({ chartConfig, onChange }: ManualInputProps) {
     });
   };
 
-  const updateDatasetLabel = (index: number, label: string) => {
-    const newDatasets = [...chartConfig.data.datasets];
-    newDatasets[index] = {
-      ...newDatasets[index],
-      label,
-    };
-    updateChartConfig({
-      ...chartConfig,
-      data: {
-        ...chartConfig.data,
-        datasets: newDatasets,
-      },
-    });
-  };
-
   const updateDatasetData = (index: number, data: number[]) => {
     const newDatasets = [...chartConfig.data.datasets];
     newDatasets[index] = {
@@ -78,17 +63,6 @@ export function ManualInput({ chartConfig, onChange }: ManualInputProps) {
           </button>
           {expandedSection === `dataset-${index}` && (
             <div className="px-4 py-3 border-t border-gray-300 bg-white space-y-3">
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">
-                  系列
-                </label>
-                <input
-                  type="text"
-                  value={dataset.label}
-                  onChange={(e) => updateDatasetLabel(index, e.target.value)}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm"
-                />
-              </div>
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">
                   ラベル
