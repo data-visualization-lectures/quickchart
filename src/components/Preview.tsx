@@ -7,7 +7,6 @@ interface PreviewProps {
   width: number;
   height: number;
   backgroundColor: string;
-  format: string;
   version: string;
 }
 
@@ -16,7 +15,6 @@ export function Preview({
   width,
   height,
   backgroundColor,
-  format,
   version,
 }: PreviewProps) {
   const [copied, setCopied] = useState(false);
@@ -27,11 +25,11 @@ export function Preview({
     width,
     height,
     backgroundColor,
-    format: format as any,
+    format: 'png',
     version,
   });
 
-  const imageUrl = url.replace(/&f=png/, `&f=${format}`);
+  const imageUrl = url;
 
   const handleCopyUrl = async () => {
     try {
@@ -44,7 +42,7 @@ export function Preview({
   };
 
   const handleDownload = async (fmt?: string) => {
-    const finalFormat = fmt || format;
+    const finalFormat = fmt || 'png';
     const downloadUrl = url.replace(/&f=\w+/, `&f=${finalFormat}`);
     setDownloadingFormat(finalFormat);
     try {
@@ -84,6 +82,27 @@ export function Preview({
         </div>
       </div>
 
+      {/* Download Options */}
+      <div className="border border-gray-300 rounded-lg p-4">
+        <p className="text-sm font-medium text-gray-700 mb-3">ダウンロード:</p>
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-2">
+          {['png', 'webp', 'jpg', 'svg', 'pdf'].map((fmt) => (
+            <button
+              key={fmt}
+              onClick={() => handleDownload(fmt)}
+              disabled={downloadingFormat === fmt}
+              className={`px-3 py-2 rounded-md text-sm font-medium transition ${
+                downloadingFormat === fmt
+                  ? 'bg-gray-300 text-gray-600 cursor-not-allowed'
+                  : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+              }`}
+            >
+              {downloadingFormat === fmt ? '処理中...' : fmt.toUpperCase()}
+            </button>
+          ))}
+        </div>
+      </div>
+
       {/* URL Display & Copy */}
       <div className="border border-gray-300 rounded-lg p-4">
         <p className="text-sm font-medium text-gray-700 mb-2">生成された URL:</p>
@@ -104,27 +123,6 @@ export function Preview({
           >
             {copied ? 'コピーしました' : 'コピー'}
           </button>
-        </div>
-      </div>
-
-      {/* Download Options */}
-      <div className="border border-gray-300 rounded-lg p-4">
-        <p className="text-sm font-medium text-gray-700 mb-3">ダウンロード:</p>
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-2">
-          {['png', 'webp', 'jpg', 'svg', 'pdf'].map((fmt) => (
-            <button
-              key={fmt}
-              onClick={() => handleDownload(fmt)}
-              disabled={downloadingFormat === fmt}
-              className={`px-3 py-2 rounded-md text-sm font-medium transition ${
-                downloadingFormat === fmt
-                  ? 'bg-gray-300 text-gray-600 cursor-not-allowed'
-                  : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
-              }`}
-            >
-              {downloadingFormat === fmt ? '処理中...' : fmt.toUpperCase()}
-            </button>
-          ))}
         </div>
       </div>
 

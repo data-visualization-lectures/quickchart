@@ -65,7 +65,6 @@ export const OUTPUT_FORMATS = [
 ] as const;
 
 export const CHART_JS_VERSIONS = [
-  { value: '2.9.4', label: 'Chart.js 2.9.4' },
   { value: '3', label: 'Chart.js 3' },
   { value: '4', label: 'Chart.js 4' },
 ] as const;
@@ -87,11 +86,10 @@ export const DEFAULT_CHART_CONFIG: ChartConfig = {
   },
   options: {
     responsive: true,
-    plugins: {
-      title: {
-        display: true,
-        text: 'Sample Chart',
-      },
+    title: {
+      display: true,
+      text: 'Sample Chart',
     },
+    plugins: {},
   },
 };

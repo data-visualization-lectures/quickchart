@@ -9,8 +9,7 @@ function App() {
   const [width, setWidth] = useState(500);
   const [height, setHeight] = useState(300);
   const [backgroundColor, setBackgroundColor] = useState('white');
-  const [format, setFormat] = useState('png');
-  const [version, setVersion] = useState('2.9.4');
+  const [version, setVersion] = useState('3');
 
   return (
     <div className="min-h-screen bg-gray-100">
@@ -37,12 +36,10 @@ function App() {
               width={width}
               height={height}
               backgroundColor={backgroundColor}
-              format={format}
               version={version}
               onWidthChange={setWidth}
               onHeightChange={setHeight}
               onBackgroundColorChange={setBackgroundColor}
-              onFormatChange={setFormat}
               onVersionChange={setVersion}
             />
           </div>
@@ -54,7 +51,6 @@ function App() {
               width={width}
               height={height}
               backgroundColor={backgroundColor}
-              format={format}
               version={version}
             />
           </div>

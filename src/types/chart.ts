@@ -17,6 +17,10 @@ export interface ChartConfig {
   options?: {
     responsive?: boolean;
     maintainAspectRatio?: boolean;
+    title?: {
+      display?: boolean;
+      text?: string;
+    };
     plugins?: {
       title?: {
         display?: boolean;
