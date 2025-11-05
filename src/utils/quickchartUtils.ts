@@ -31,16 +31,25 @@ export function generateQuickChartUrl(params: QuickChartParams): string {
   return `${BASE_URL}?${queryParams.toString()}`;
 }
 
-export function downloadChartImage(
+export async function downloadChartImage(
   url: string,
   filename: string = 'chart'
-): void {
-  const link = document.createElement('a');
-  link.href = url;
-  link.download = filename;
-  document.body.appendChild(link);
-  link.click();
-  document.body.removeChild(link);
+): Promise<void> {
+  try {
+    const response = await fetch(url);
+    const blob = await response.blob();
+    const blobUrl = window.URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.href = blobUrl;
+    link.download = filename;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    window.URL.revokeObjectURL(blobUrl);
+  } catch (error) {
+    console.error('Download failed:', error);
+    throw error;
+  }
 }
 
 export function copyToClipboard(text: string): Promise<void> {

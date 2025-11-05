@@ -46,7 +46,7 @@ export function Preview({
     const downloadUrl = url.replace(/&f=\w+/, `&f=${finalFormat}`);
     setDownloadingFormat(finalFormat);
     try {
-      downloadChartImage(downloadUrl, `chart.${finalFormat}`);
+      await downloadChartImage(downloadUrl, `chart.${finalFormat}`);
     } catch (error) {
       console.error('Download failed:', error);
     } finally {
