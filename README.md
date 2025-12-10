@@ -10,3 +10,4 @@
 ## デプロイ先
 
 - Netlify
+- quickchart.dataviz.jp
