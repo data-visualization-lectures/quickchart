@@ -1,3 +1,5 @@
+import './lib/auth/supabase.js'
+import './lib/auth/dataviz-auth-client.js'
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App.tsx'
