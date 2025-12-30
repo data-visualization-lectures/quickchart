@@ -2,7 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
+/* dataviz-auth-client.js の固定ヘッダー対応 */
 body {
   margin: 0;
   padding: 0;
+  padding-top: 48px; /* dataviz-header の高さ分 */
 }
