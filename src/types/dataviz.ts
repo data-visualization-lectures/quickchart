@@ -15,6 +15,12 @@ declare global {
         datavizSupabase?: any;
 
         /**
+         * dataviz-auth-client.js によって公開されるAPIのベースURL
+         * 例: "https://api.dataviz.jp"
+         */
+        datavizApiUrl?: string;
+
+        /**
          * 後方互換性のため残されている可能性のある旧名称
          * @deprecated Use window.datavizSupabase instead
          */
